@@ -1,4 +1,4 @@
-import http from "../http-common";
+import http from "../http-common-finance";
 
 class ListFinanceDataService{
     getAll(page = 0){
