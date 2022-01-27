@@ -1,7 +1,7 @@
 import React,{useState} from "react";
 import {Navigate, useNavigate} from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
-import ListFinance from "../listFinance";
+
 import './addInfraction.css';
 import { Button , Form } from 'react-bootstrap';
 import Footer from "../footer/footer";
