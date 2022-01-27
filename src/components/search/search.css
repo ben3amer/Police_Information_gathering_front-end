@@ -1,0 +1,44 @@
+.home{
+  min-height: 100vh;
+}
+.search_input {
+    display: flex;
+    align-items: center;
+    height: 50px;
+    border: 1px solid lightgray;
+    padding: 10px 20px;
+    border-radius: 999px;
+    width: 75vw;
+    margin: 0 auto;
+    margin-top: 150px !important;
+    max-width: 560px;
+  }
+  
+  .search_input > input {
+    flex: 1;
+    padding: 10px 20px;
+    font-size: medium;
+    border: none;
+  }
+  
+  .search_input > input:focus {
+    outline-width: 0;
+    outline: none;
+  }
+  
+
+.search_button{
+    padding: 7px 12px;
+    border-radius: 999px;
+    display: flex;
+    justify-content: center;
+    width: 140x;
+    margin : auto ;
+    background-color: #323436;
+    border: 1px solid #323436;
+  }
+  .card{
+    margin-left:10px !important;
+    margin-right: 10px !important;
+    margin-top: 10px !important;
+  }
