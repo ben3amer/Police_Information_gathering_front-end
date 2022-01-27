@@ -9,34 +9,10 @@ import { Button , Form } from 'react-bootstrap';
 import "./search.css";
 
 const Search = props => {
-    const [listFinance, setListFinance] = useState([  {
-        cin :'11405023',
-        name:'mohamed amine',
-        lastname :'ben ameur',
-        infraction:'100DT'
-        }
-        ,
-        {
-            cin :'11405023',
-            name:'mohamed amine',
-            lastname :'ben ameur',
-            infraction:'200DT'
-            }
+    const [listFinance, setListFinance] = useState([ 
         ]);
     const [listInterieur,setListInterieur] = useState([ 
-        {
-        cin :'11405023',
-        name:'mohamed amine',
-        lastname :'ben ameur',
-        infraction:'type1'
-        }
-        ,  
-        {
-            cin :'11405023',
-            name:'mohamed amine',
-            lastname :'ben ameur',
-            infraction:'type2'
-        }
+       
       ]);
     const [cin, setSearchCIN] = useState("");
 
