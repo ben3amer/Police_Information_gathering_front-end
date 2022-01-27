@@ -51,7 +51,7 @@ const Search = props => {
     ListFinanceDataService.find(query, by)
     .then(response =>{
       console.log(response.data);
-      setListFinance(response.data.ListFinance);
+      setListFinance(response.data);
     })
     .catch(e => {
       console.log(e);
@@ -63,7 +63,7 @@ const Search = props => {
     ListInterieurDataService.find(query, by)
     .then(response =>{
       console.log(response.data);
-      setListInterieur(response.data.ListInterieur);
+      setListInterieur(response.data);
     })
     .catch(e => {
       console.log(e);

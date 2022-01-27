@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react'
 import { Switch, Route, Link,useNavigate } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import AuthContext from '../../store/auth-context'
-
+import LoginDataService from "../../services/login";
 import { Button, Form } from 'react-bootstrap'
 import './login.css'
 import Footer from '../footer/footer'
@@ -10,10 +10,7 @@ import Footer from '../footer/footer'
 const Login = (props) => {
   const authCtx = useContext(AuthContext)
   const navigate = useNavigate()
-  const initialUserState = {
-    username: '',
-    password: '',
-  }
+  const [user, setUser] = useState([]);
   const [cin, setCin] = useState('')
   const [password, setPassword] = useState('')
   const handleSubmit = (event) => {
@@ -21,19 +18,33 @@ const Login = (props) => {
     //alert(`The name you entered was: ${name} and password is : ${password}`);
     if (!cin) {
       alert(' CIN is required ! ')
-    } else if (!password) {
+    } 
+    else if (!password) {
       alert('Password is required ! ')
-    } else if (cin === 'aaaa' && password === '123456') {
-      authCtx.login(cin)
-      console.log(authCtx.isLoggedIn)
-      //alert('connected successfully')
-      navigate('/search')
-    } else {
-      alert('Username and Password combination is incorrect')
-    }
-    // alert(`The name you entered was: ${name} and password is : ${password}`)
-  }
+    } 
+    else  {
+      const find = (query,  by) => {
+        LoginDataService.find(query, by)
+        .then(response =>{
+          console.log(response.data);
+          setUser(response.data);
+        })
+        .catch(e => {
+          console.log(e);
+        });
+      };
+      if(cin == user.cin && password == user.password){
+        authCtx.login(cin)
+        console.log(authCtx.isLoggedIn)
 
+        //alert('connected successfully')
+        navigate('/search')
+      }
+     else {
+      alert('Cin and Password combination is incorrect')
+    }
+  }
+}
   /*const login = () => {
     props.login(user)
     props.history.push('/');

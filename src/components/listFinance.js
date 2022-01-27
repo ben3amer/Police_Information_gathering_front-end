@@ -22,7 +22,7 @@ const ListFinance = props => {
     ListFinanceDataService.getAll()
     .then(response => {
       console.log(response.data);
-      setListFinance(response.data.listFinance);
+      setListFinance(response.data);
     })
     .catch(e => {
       console.log(e);
