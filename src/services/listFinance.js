@@ -1,20 +1,14 @@
 import http from "../http-common-finance";
 
 class ListFinanceDataService{
-    getAll(page = 0){
-        return http.get(`?page=${page}`);
-    }
 
-    get(id){
-        return http.get(`/id/${id}`);
-    }
 
-    find(query, by = "cin", page = 0){
-        return http.get(`?${by}=${query}&page=${page}`);
+    find(query, by = "cin"){
+        return http.get(`${query}`);
     }
 
     createInfraction(data){
-        return http.post("/ministerfinance", data); 
+        return http.post("/finance", data); 
     }
 
 

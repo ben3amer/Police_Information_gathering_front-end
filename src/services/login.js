@@ -9,8 +9,8 @@ class LoginDataService{
         return http.get(`/id/${id}`);
     }
 
-    find(query, by = "cin", page = 0){
-        return http.get(`?${by}=${query}&page=${page}`);
+    find(cin,password,){
+        return http.get(`${cin}/${password}`);
     }
 
 

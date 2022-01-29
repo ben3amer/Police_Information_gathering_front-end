@@ -1,20 +1,13 @@
 import http from "../http-common-interieur";
 
 class ListInterieurDataService{
-    getAll(page = 0){
-        return http.get(`?page=${page}`);
-    }
-
-    get(id){
-        return http.get(`/id/${id}`);
-    }
-
-    find(query, by = "name", page = 0){
-        return http.get(`?${by}=${query}&page=${page}`);
+ 
+    find(query, by = "cin"){
+        return http.get(`${query}`);
     }
 
     createInfraction(data){
-        return http.post("/listInterieur", data); 
+        return http.post("/interieur", data); 
     }
 
 }

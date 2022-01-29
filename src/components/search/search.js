@@ -9,43 +9,14 @@ import { Button , Form } from 'react-bootstrap';
 import "./search.css";
 
 const Search = props => {
-    const [listFinance, setListFinance] = useState([ 
-        ]);
-    const [listInterieur,setListInterieur] = useState([ 
-       
-      ]);
+    const [listFinance, setListFinance] = useState([]);
+    const [listInterieur,setListInterieur] = useState([]);
+    const [infraction_finance, setInfraction_finance] = useState([])
+    const [infraction_interieur, setInfraction_interieur] = useState([]);
     const [cin, setSearchCIN] = useState("");
 
-    useEffect(() =>{
-      retrieveListFinance();
-      retrieveListInterieur();
-    }, []);
-
-  const retrieveListFinance = () => {
-    ListFinanceDataService.getAll()
-    .then(response => {
-      console.log(response.data);
-      setListFinance(response.data.listFinance);
-    })
-    .catch(e => {
-      console.log(e);
-    });
-  };
-  const retrieveListInterieur = () => {
-    ListInterieurDataService.getAll()
-    .then(response => {
-      console.log(response.data);
-      setListInterieur(response.data.ListInterieur);
-    })
-    .catch(e => {
-      console.log(e);
-    });
-  };
   
-  const refreshList = () => {
-    retrieveListFinance ();
-    retrieveListInterieur();
-  };
+
 
   const findFinance = (query,  by) => {
     ListFinanceDataService.find(query, by)
@@ -123,8 +94,8 @@ const Search = props => {
                                     <h5 className="card-title">Infraction de ministere d'interieur</h5>
                                     <p className="card-text">
                                         <strong>CIN: </strong>{infraction_interieur.cin}<br/>
-                                        <strong>Name: </strong>{infraction_interieur.name}<br/>
-                                        <strong>Lastname: </strong>{infraction_interieur.lastname}<br/>
+                                        <strong>Name: </strong>{infraction_interieur.firstName}<br/>
+                                        <strong>Lastname: </strong>{infraction_interieur.lastName}<br/>
                                         <strong>Infraction: </strong>{infraction_interieur.infraction}
                                     </p>
                                 </div>
@@ -143,8 +114,8 @@ const Search = props => {
                                     <h5 className="card-title">Infraction de ministere de finance</h5>
                                     <p className="card-text">
                                         <strong>CIN: </strong>{infraction_finance.cin}<br/>
-                                        <strong>Name: </strong>{infraction_finance.name}<br/>
-                                        <strong>Lastname: </strong>{infraction_finance.lastname}<br/>
+                                        <strong>Name: </strong>{infraction_finance.firstName}<br/>
+                                        <strong>Lastname: </strong>{infraction_finance.lastName}<br/>
                                         <strong>Infraction: </strong>{infraction_finance.infraction}
                                     </p>
                                 </div>

@@ -6,13 +6,14 @@ import LoginDataService from "../../services/login";
 import { Button, Form } from 'react-bootstrap'
 import './login.css'
 import Footer from '../footer/footer'
-
+import axios from 'axios';
 const Login = (props) => {
   const authCtx = useContext(AuthContext)
   const navigate = useNavigate()
   const [user, setUser] = useState([]);
   const [cin, setCin] = useState('')
   const [password, setPassword] = useState('')
+
   const handleSubmit = (event) => {
     event.preventDefault()
     //alert(`The name you entered was: ${name} and password is : ${password}`);
@@ -23,26 +24,25 @@ const Login = (props) => {
       alert('Password is required ! ')
     } 
     else  {
-      const find = (query,  by) => {
-        LoginDataService.find(query, by)
-        .then(response =>{
+      axios.get(`http://localhost:9000/agent/${cin}/${password}`)
+         .then(response =>{
           console.log(response.data);
-          setUser(response.data);
+          if(cin == response.data.cin && password == response.data.password){
+            authCtx.login(cin)
+            console.log(authCtx.isLoggedIn)
+    
+            alert('connected successfully')
+            navigate('/search')
+          }
+         else {
+          alert('Cin and Password combination is incorrect')
+        }
         })
         .catch(e => {
           console.log(e);
         });
-      };
-      if(cin == user.cin && password == user.password){
-        authCtx.login(cin)
-        console.log(authCtx.isLoggedIn)
-
-        //alert('connected successfully')
-        navigate('/search')
-      }
-     else {
-      alert('Cin and Password combination is incorrect')
-    }
+      
+     
   }
 }
   /*const login = () => {
